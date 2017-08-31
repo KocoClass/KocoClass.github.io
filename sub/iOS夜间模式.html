@@ -375,7 +375,18 @@ if ([self.dk_manager.themeVersion isEqualToString:DKThemeVersionNormal]) {
 
 <p>5.项目中所有控件颜色，文字都需要设置额外属性,如：</p>
 
-<div><pre><code class="language-none">self.view.dk_backgroundColorPicker = DKColorPickerWithKey(BG);</code></pre></div>
+<div><pre><code class="language-none">
+    self.view.dk_backgroundColorPicker = DKColorPickerWithKey(BG);//view设置背景
+    self.navigationController.navigationBar.dk_barTintColorPicker = DKColorPickerWithKey(BAR);//navigationBar设置背景
+    self.navigationItem.leftBarButtonItem.dk_tintColorPicker = DKColorPickerWithKey(TINT);//navigationItem设置文字
+    self.tableView.dk_backgroundColorPicker = DKColorPickerWithRGB(0xffffff, 0x343434, 0xfafafa);//tableView设置背景
+    self.tableView.dk_separatorColorPicker = DKColorPickerWithKey(SEP);//
+    cell.dk_cellTintColorPicker = DKColorPickerWithRGB(0xffffff, 0x343434, 0xfafafa);//
+    [button dk_setTitleColorPicker:DKColorPickerWithKey(TINT) forState:UIControlStateNormal];//button设置文字
+    textField.dk_textColorPicker = DKColorPickerWithKey(TEXT);//textField设置文字
+    navigationLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);//label设置文字
+
+</code></pre></div>
 
 <p>具体实现代码参考pods目录下DKNightVersion-&gt;UIKit 目录下个属性；</p>
 
