@@ -338,7 +338,7 @@ kbd {
 <a href="../index.html" title="首页">首页</a>><a href="iOS.html">iOS相关</a>>夜间模式<span style="float:right" >到顶了</span>
 
 
-<p>主要借助一个第三方开源框架(DKNightVersion)</p>
+<p>主要借助一个第三方开源框架<a href="https://github.com/Draveness/DKNightVersion#advanced-usage">DKNightVersion</a></p>
 
 <p>使用方法：</p>
 
@@ -366,7 +366,10 @@ if ([self.dk_manager.themeVersion isEqualToString:DKThemeVersionNormal]) {
     [[DKNightVersionManager sharedManager] nightFalling];
 }else{
     [[DKNightVersionManager sharedManager] dawnComing];
-}</code></pre></div>
+}
+//或者这样设置
+    self.dk_manager.themeVersion = @"RED";//设置红色背景
+</code></pre></div>
 
 <p>}</p>
 
