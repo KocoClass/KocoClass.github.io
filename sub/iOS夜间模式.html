@@ -385,7 +385,8 @@ if ([self.dk_manager.themeVersion isEqualToString:DKThemeVersionNormal]) {
     [button dk_setTitleColorPicker:DKColorPickerWithKey(TINT) forState:UIControlStateNormal];//button设置文字
     textField.dk_textColorPicker = DKColorPickerWithKey(TEXT);//textField设置文字
     navigationLabel.dk_textColorPicker = DKColorPickerWithKey(TEXT);//label设置文字
-
+    imageView.dk_imagePicker = DKImagePickerWithNames(@"normal1", @"night1", @"normal1");//设置各种模式下图片
+    imageView.dk_alphaPicker = DKAlphaPickerWithAlphas(1.f, 0.6f, 0.2f);//设置各种模式下图片透明度
 </code></pre></div>
 
 <p>具体实现代码参考pods目录下DKNightVersion-&gt;UIKit 目录下个属性；</p>
