@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>MJExtension</title>
+
+
+<style type="text/css">
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+
+kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  font-size: 11px;
+  line-height: 10px;
+  color: #555;
+  vertical-align: middle;
+  background-color: #fcfcfc;
+  border: solid 1px #ccc;
+  border-bottom-color: #bbb;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #bbb
+}
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+
+
+</head>
+
+<body>
+
+<h1 id="toc_0">MJExtension使用方法</h1>
+
+<ul>
+<li>JSON和模型之间快速的转换</li>
+<li>转换速度快、使用简单方便的字典转模型框架</li>
+</ul>
+
+<p>GitHub：<a href="https://github.com/CoderMJLee/MJExtension#Model_contains_model">MJExtension</a></p>
+
+<h2 id="toc_1">Contents</h2>
+
+<ul>
+<li><a href="#Getting_Started">Getting Started 【开始使用】</a>
+
+<ul>
+<li><a href="#Features">Features 【能做什么】</a></li>
+<li><a href="#Installation">Installation 【安装】</a></li>
+</ul></li>
+<li><a href="#Examples">Examples 【示例】</a>
+
+<ul>
+<li><a href="#JSON_Model">JSON -&gt; Model</a></li>
+<li><a href="#JSONString_Model">JSONString -&gt; Model</a></li>
+<li><a href="#Model_contains_model">Model contains model 【模型包含模型】</a></li>
+<li><a href="#Model_contains_model_array">Model contains model-array 【模型包含模型数组】</a></li>
+<li><a href="#Model_name_JSON_key_mapping">Model name - JSON key mapping 【键值对映射 多级映射】</a></li>
+<li><a href="#JSON_array_model_array">JSON array -&gt; model array</a></li>
+<li><a href="#Model_JSON">Model -&gt; JSON</a></li>
+<li><a href="#Model_array_JSON_array">Model array -&gt; JSON array</a></li>
+<li><a href="#Core_Data">Core Data</a></li>
+<li><a href="#Coding">Coding</a></li>
+<li><a href="#Camel_underline">Camel -&gt; underline</a></li>
+<li><a href="#NSString_NSDate">NSString -&gt; NSDate, nil -&gt; @&quot;&quot;</a></li>
+<li><a href="#More_use_cases">More use cases</a></li>
+</ul></li>
+</ul>
+
+<hr>
+
+<h1 id="toc_2"><a id="Getting_Started"></a> Getting Started【开始使用】</h1>
+
+<h2 id="toc_3"><a id="Features"></a> Features【能做什么】</h2>
+
+<ul>
+<li>MJExtension是一套字典和模型之间互相转换的超轻量级框架</li>
+<li><code>JSON</code> --&gt; <code>Model</code>、<code>Core Data Model</code></li>
+<li><code>JSONString</code> --&gt; <code>Model</code>、<code>Core Data Model</code></li>
+<li><code>Model</code>、<code>Core Data Model</code> --&gt; <code>JSON</code></li>
+<li><code>JSON Array</code> --&gt; <code>Model Array</code>、<code>Core Data Model Array</code></li>
+<li><code>JSONString</code> --&gt; <code>Model Array</code>、<code>Core Data Model Array</code></li>
+<li><code>Model Array</code>、<code>Core Data Model Array</code> --&gt; <code>JSON Array</code></li>
+<li>Coding all properties of model in one line code.
+
+<ul>
+<li>只需要一行代码，就能实现模型的所有属性进行Coding（归档和解档）</li>
+</ul></li>
+</ul>
+
+<h2 id="toc_4"><a id="Installation"></a> Installation【安装】</h2>
+
+<h3 id="toc_5">From CocoaPods【使用CocoaPods】</h3>
+
+<div><pre><code class="language-ruby">pod &#39;MJExtension&#39;</code></pre></div>
+
+<h3 id="toc_6">Manually【手动导入】</h3>
+
+<ul>
+<li>Drag all source files under floder <code>MJExtension</code> to your project.【将<code>MJExtension</code>文件夹中的所有源代码拽入项目中】</li>
+<li>Import the main header file：<code>#import &quot;MJExtension.h&quot;</code>【导入主头文件：<code>#import &quot;MJExtension.h&quot;</code>】</li>
+</ul>
+
+<div><pre><code class="language-objectivec">MJExtension.h
+MJConst.h               MJConst.m
+MJFoundation.h          MJFoundation.m
+MJProperty.h            MJProperty.m
+MJType.h                MJType.m
+NSObject+MJCoding.h     NSObject+MJCoding.m
+NSObject+MJProperty.h   NSObject+MJProperty.m
+NSObject+MJKeyValue.h   NSObject+MJKeyValue.m</code></pre></div>
+
+<h1 id="toc_7"><a id="Examples"></a> Examples【示例】</h1>
+
+<h3 id="toc_8"><a id="JSON_Model"></a> The most simple JSON -&gt; Model【最简单的字典转模型】</h3>
+
+<div><pre><code class="language-objectivec">typedef enum {
+    SexMale,
+    SexFemale
+} Sex;
+
+@interface User : NSObject
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *icon;
+@property (assign, nonatomic) unsigned int age;
+@property (copy, nonatomic) NSString *height;
+@property (strong, nonatomic) NSNumber *money;
+@property (assign, nonatomic) Sex sex;
+@property (assign, nonatomic, getter=isGay) BOOL gay;
+@end
+
+/***********************************************/
+
+NSDictionary *dict = @{
+    @&quot;name&quot; : @&quot;Jack&quot;,
+    @&quot;icon&quot; : @&quot;lufy.png&quot;,
+    @&quot;age&quot; : @20,
+    @&quot;height&quot; : @&quot;1.55&quot;,
+    @&quot;money&quot; : @100.9,
+    @&quot;sex&quot; : @(SexFemale),
+    @&quot;gay&quot; : @&quot;true&quot;
+//   @&quot;gay&quot; : @&quot;1&quot;
+//   @&quot;gay&quot; : @&quot;NO&quot;
+};
+
+// JSON -&gt; User
+User *user = [User mj_objectWithKeyValues:dict];
+
+NSLog(@&quot;name=%@, icon=%@, age=%zd, height=%@, money=%@, sex=%d, gay=%d&quot;, user.name, user.icon, user.age, user.height, user.money, user.sex, user.gay);
+// name=Jack, icon=lufy.png, age=20, height=1.550000, money=100.9, sex=1</code></pre></div>
+
+<h3 id="toc_9"><a id="JSONString_Model"></a> JSONString -&gt; Model【JSON字符串转模型】</h3>
+
+<div><pre><code class="language-objectivec">// 1.Define a JSONString
+NSString *jsonString = @&quot;{\&quot;name\&quot;:\&quot;Jack\&quot;, \&quot;icon\&quot;:\&quot;lufy.png\&quot;, \&quot;age\&quot;:20}&quot;;
+
+// 2.JSONString -&gt; User
+User *user = [User mj_objectWithKeyValues:jsonString];
+
+// 3.Print user&#39;s properties
+NSLog(@&quot;name=%@, icon=%@, age=%d&quot;, user.name, user.icon, user.age);
+// name=Jack, icon=lufy.png, age=20</code></pre></div>
+
+<h3 id="toc_10"><a id="Model_contains_model"></a> Model contains model【模型中嵌套模型】</h3>
+
+<div><pre><code class="language-objectivec">@interface Status : NSObject
+@property (copy, nonatomic) NSString *text;
+@property (strong, nonatomic) User *user;
+@property (strong, nonatomic) Status *retweetedStatus;
+@end
+
+/***********************************************/
+
+NSDictionary *dict = @{
+    @&quot;text&quot; : @&quot;Agree!Nice weather!&quot;,
+    @&quot;user&quot; : @{
+        @&quot;name&quot; : @&quot;Jack&quot;,
+        @&quot;icon&quot; : @&quot;lufy.png&quot;
+    },
+    @&quot;retweetedStatus&quot; : @{
+        @&quot;text&quot; : @&quot;Nice weather!&quot;,
+        @&quot;user&quot; : @{
+            @&quot;name&quot; : @&quot;Rose&quot;,
+            @&quot;icon&quot; : @&quot;nami.png&quot;
+        }
+    }
+};
+
+// JSON -&gt; Status
+Status *status = [Status mj_objectWithKeyValues:dict];
+
+NSString *text = status.text;
+NSString *name = status.user.name;
+NSString *icon = status.user.icon;
+NSLog(@&quot;text=%@, name=%@, icon=%@&quot;, text, name, icon);
+// text=Agree!Nice weather!, name=Jack, icon=lufy.png
+
+NSString *text2 = status.retweetedStatus.text;
+NSString *name2 = status.retweetedStatus.user.name;
+NSString *icon2 = status.retweetedStatus.user.icon;
+NSLog(@&quot;text2=%@, name2=%@, icon2=%@&quot;, text2, name2, icon2);
+// text2=Nice weather!, name2=Rose, icon2=nami.png</code></pre></div>
+
+<h3 id="toc_11"><a id="Model_contains_model_array"></a> Model contains model-array【模型中有个数组属性，数组里面又要装着其他模型】</h3>
+
+<div><pre><code class="language-objectivec">@interface Ad : NSObject
+@property (copy, nonatomic) NSString *image;
+@property (copy, nonatomic) NSString *url;
+@end
+
+@interface StatusResult : NSObject
+/** Contatins status model */
+@property (strong, nonatomic) NSMutableArray *statuses;
+/** Contatins ad model */
+@property (strong, nonatomic) NSArray *ads;
+@property (strong, nonatomic) NSNumber *totalNumber;
+@end
+
+/***********************************************/
+
+// Tell MJExtension what type model will be contained in statuses and ads.
+在StatusResult.m中加入该方法
++ (NSDictionary *)mj_objectClassInArray{
+    return @{
+               @&quot;statuses&quot; : @&quot;Status&quot;,
+               // @&quot;statuses&quot; : [Status class],
+               @&quot;ads&quot; : @&quot;Ad&quot;
+               // @&quot;ads&quot; : [Ad class]
+           };
+}
+官方方法⏬⏬⏬⏬⏬⏬⏬⏬⏬⏬⏬⏬
+---------------------------------------
+[StatusResult mj_setupObjectClassInArray:^NSDictionary *{
+    return @{
+               @&quot;statuses&quot; : @&quot;Status&quot;,
+               // @&quot;statuses&quot; : [Status class],
+               @&quot;ads&quot; : @&quot;Ad&quot;
+               // @&quot;ads&quot; : [Ad class]
+           };
+}];
+----------------------------------------
+
+// Equals: StatusResult.m implements +mj_objectClassInArray method.
+
+NSDictionary *dict = @{
+    @&quot;statuses&quot; : @[
+                      @{
+                          @&quot;text&quot; : @&quot;Nice weather!&quot;,
+                          @&quot;user&quot; : @{
+                              @&quot;name&quot; : @&quot;Rose&quot;,
+                              @&quot;icon&quot; : @&quot;nami.png&quot;
+                          }
+                      },
+                      @{
+                          @&quot;text&quot; : @&quot;Go camping tomorrow!&quot;,
+                          @&quot;user&quot; : @{
+                              @&quot;name&quot; : @&quot;Jack&quot;,
+                              @&quot;icon&quot; : @&quot;lufy.png&quot;
+                          }
+                      }
+                  ],
+    @&quot;ads&quot; : @[
+                 @{
+                     @&quot;image&quot; : @&quot;ad01.png&quot;,
+                     @&quot;url&quot; : @&quot;http://www.ad01.com&quot;
+                 },
+                 @{
+                     @&quot;image&quot; : @&quot;ad02.png&quot;,
+                     @&quot;url&quot; : @&quot;http://www.ad02.com&quot;
+                 }
+             ],
+    @&quot;totalNumber&quot; : @&quot;2014&quot;
+};
+
+// JSON -&gt; StatusResult
+StatusResult *result = [StatusResult mj_objectWithKeyValues:dict];
+
+NSLog(@&quot;totalNumber=%@&quot;, result.totalNumber);
+// totalNumber=2014
+
+// Printing
+for (Status *status in result.statuses) {
+    NSString *text = status.text;
+    NSString *name = status.user.name;
+    NSString *icon = status.user.icon;
+    NSLog(@&quot;text=%@, name=%@, icon=%@&quot;, text, name, icon);
+}
+// text=Nice weather!, name=Rose, icon=nami.png
+// text=Go camping tomorrow!, name=Jack, icon=lufy.png
+
+// Printing
+for (Ad *ad in result.ads) {
+    NSLog(@&quot;image=%@, url=%@&quot;, ad.image, ad.url);
+}
+// image=ad01.png, url=http://www.ad01.com
+// image=ad02.png, url=http://www.ad02.com</code></pre></div>
+
+<h3 id="toc_12"><a id="Model_name_JSON_key_mapping"></a> Model name - JSON key mapping【模型中的属性名和字典中的key不相同(或者需要多级映射)】</h3>
+
+<div><pre><code class="language-objectivec">@interface Bag : NSObject
+@property (copy, nonatomic) NSString *name;
+@property (assign, nonatomic) double price;
+@end
+
+@interface Student : NSObject
+@property (copy, nonatomic) NSString *ID;
+@property (copy, nonatomic) NSString *desc;
+@property (copy, nonatomic) NSString *nowName;
+@property (copy, nonatomic) NSString *oldName;
+@property (copy, nonatomic) NSString *nameChangedTime;
+@property (strong, nonatomic) Bag *bag;
+@end
+
+/***********************************************/
+
+// How to map
+[Student mj_setupReplacedKeyFromPropertyName:^NSDictionary *{
+    return @{
+               @&quot;ID&quot; : @&quot;id&quot;,
+               @&quot;desc&quot; : @&quot;desciption&quot;,
+               @&quot;oldName&quot; : @&quot;name.oldName&quot;,
+               @&quot;nowName&quot; : @&quot;name.newName&quot;,
+               @&quot;nameChangedTime&quot; : @&quot;name.info[1].nameChangedTime&quot;,
+               @&quot;bag&quot; : @&quot;other.bag&quot;
+           };
+}];
+// Equals: Student.m implements +mj_replacedKeyFromPropertyName method.
+
+NSDictionary *dict = @{
+    @&quot;id&quot; : @&quot;20&quot;,
+    @&quot;desciption&quot; : @&quot;kids&quot;,
+    @&quot;name&quot; : @{
+        @&quot;newName&quot; : @&quot;lufy&quot;,
+        @&quot;oldName&quot; : @&quot;kitty&quot;,
+        @&quot;info&quot; : @[
+                 @&quot;test-data&quot;,
+                 @{
+                             @&quot;nameChangedTime&quot; : @&quot;2013-08&quot;
+                         }
+                  ]
+    },
+    @&quot;other&quot; : @{
+        @&quot;bag&quot; : @{
+            @&quot;name&quot; : @&quot;a red bag&quot;,
+            @&quot;price&quot; : @100.7
+        }
+    }
+};
+
+// JSON -&gt; Student
+Student *stu = [Student mj_objectWithKeyValues:dict];
+
+// Printing
+NSLog(@&quot;ID=%@, desc=%@, oldName=%@, nowName=%@, nameChangedTime=%@&quot;,
+      stu.ID, stu.desc, stu.oldName, stu.nowName, stu.nameChangedTime);
+// ID=20, desc=kids, oldName=kitty, nowName=lufy, nameChangedTime=2013-08
+NSLog(@&quot;bagName=%@, bagPrice=%f&quot;, stu.bag.name, stu.bag.price);
+// bagName=a red bag, bagPrice=100.700000</code></pre></div>
+
+<h3 id="toc_13"><a id="JSON_array_model_array"></a> JSON array -&gt; model array【将一个字典数组转成模型数组】</h3>
+
+<div><pre><code class="language-objectivec">NSArray *dictArray = @[
+                         @{
+                             @&quot;name&quot; : @&quot;Jack&quot;,
+                             @&quot;icon&quot; : @&quot;lufy.png&quot;
+                         },
+                         @{
+                             @&quot;name&quot; : @&quot;Rose&quot;,
+                             @&quot;icon&quot; : @&quot;nami.png&quot;
+                         }
+                     ];
+
+// JSON array -&gt; User array
+NSArray *userArray = [User mj_objectArrayWithKeyValuesArray:dictArray];
+
+// Printing
+for (User *user in userArray) {
+    NSLog(@&quot;name=%@, icon=%@&quot;, user.name, user.icon);
+}
+// name=Jack, icon=lufy.png
+// name=Rose, icon=nami.png</code></pre></div>
+
+<h3 id="toc_14"><a id="Model_JSON"></a> Model -&gt; JSON【将一个模型转成字典】</h3>
+
+<div><pre><code class="language-objectivec">// New model
+User *user = [[User alloc] init];
+user.name = @&quot;Jack&quot;;
+user.icon = @&quot;lufy.png&quot;;
+
+Status *status = [[Status alloc] init];
+status.user = user;
+status.text = @&quot;Nice mood!&quot;;
+
+// Status -&gt; JSON
+NSDictionary *statusDict = status.mj_keyValues;
+NSLog(@&quot;%@&quot;, statusDict);
+/*
+ {
+ text = &quot;Nice mood!&quot;;
+ user =     {
+ icon = &quot;lufy.png&quot;;
+ name = Jack;
+ };
+ }
+ */
+
+// More complex situation
+Student *stu = [[Student alloc] init];
+stu.ID = @&quot;123&quot;;
+stu.oldName = @&quot;rose&quot;;
+stu.nowName = @&quot;jack&quot;;
+stu.desc = @&quot;handsome&quot;;
+stu.nameChangedTime = @&quot;2018-09-08&quot;;
+
+Bag *bag = [[Bag alloc] init];
+bag.name = @&quot;a red bag&quot;;
+bag.price = 205;
+stu.bag = bag;
+
+NSDictionary *stuDict = stu.mj_keyValues;
+NSLog(@&quot;%@&quot;, stuDict);
+/*
+{
+    ID = 123;
+    bag =     {
+        name = &quot;\U5c0f\U4e66\U5305&quot;;
+        price = 205;
+    };
+    desc = handsome;
+    nameChangedTime = &quot;2018-09-08&quot;;
+    nowName = jack;
+    oldName = rose;
+}
+ */</code></pre></div>
+
+<h3 id="toc_15"><a id="Model_array_JSON_array"></a> Model array -&gt; JSON array【将一个模型数组转成字典数组】</h3>
+
+<div><pre><code class="language-objectivec">// New model array
+User *user1 = [[User alloc] init];
+user1.name = @&quot;Jack&quot;;
+user1.icon = @&quot;lufy.png&quot;;
+
+User *user2 = [[User alloc] init];
+user2.name = @&quot;Rose&quot;;
+user2.icon = @&quot;nami.png&quot;;
+
+NSArray *userArray = @[user1, user2];
+
+// Model array -&gt; JSON array
+NSArray *dictArray = [User mj_keyValuesArrayWithObjectArray:userArray];
+NSLog(@&quot;%@&quot;, dictArray);
+/*
+ (
+ {
+ icon = &quot;lufy.png&quot;;
+ name = Jack;
+ },
+ {
+ icon = &quot;nami.png&quot;;
+ name = Rose;
+ }
+ )
+ */</code></pre></div>
+
+<h3 id="toc_16"><a id="Core_Data"></a> Core Data</h3>
+
+<div><pre><code class="language-objectivec">NSDictionary *dict = @{
+                         @&quot;name&quot; : @&quot;Jack&quot;,
+                         @&quot;icon&quot; : @&quot;lufy.png&quot;,
+                         @&quot;age&quot; : @20,
+                         @&quot;height&quot; : @1.55,
+                         @&quot;money&quot; : @&quot;100.9&quot;,
+                         @&quot;sex&quot; : @(SexFemale),
+                         @&quot;gay&quot; : @&quot;true&quot;
+                     };
+
+// This demo just provide simple steps
+NSManagedObjectContext *context = nil;
+User *user = [User mj_objectWithKeyValues:dict context:context];
+
+[context save:nil];</code></pre></div>
+
+<h3 id="toc_17"><a id="Coding"></a> Coding</h3>
+
+<div><pre><code class="language-objectivec">#import &quot;MJExtension.h&quot;
+
+@implementation Bag
+// NSCoding Implementation
+MJExtensionCodingImplementation
+@end
+
+/***********************************************/
+
+// what properties not to be coded
+[Bag mj_setupIgnoredCodingPropertyNames:^NSArray *{
+    return @[@&quot;name&quot;];
+}];
+// Equals: Bag.m implements +mj_ignoredCodingPropertyNames method.
+
+// Create model
+Bag *bag = [[Bag alloc] init];
+bag.name = @&quot;Red bag&quot;;
+bag.price = 200.8;
+
+NSString *file = [NSHomeDirectory() stringByAppendingPathComponent:@&quot;Desktop/bag.data&quot;];
+// Encoding
+[NSKeyedArchiver archiveRootObject:bag toFile:file];
+
+// Decoding
+Bag *decodedBag = [NSKeyedUnarchiver unarchiveObjectWithFile:file];
+NSLog(@&quot;name=%@, price=%f&quot;, decodedBag.name, decodedBag.price);
+// name=(null), price=200.800000</code></pre></div>
+
+<h3 id="toc_18"><a id="Camel_underline"></a> Camel -&gt; underline【统一转换属性名（比如驼峰转下划线）】</h3>
+
+<div><pre><code class="language-objectivec">// Dog
+#import &quot;MJExtension.h&quot;
+
+@implementation Dog
++ (NSString *)mj_replacedKeyFromPropertyName121:(NSString *)propertyName
+{
+    // nickName -&gt; nick_name
+    return [propertyName mj_underlineFromCamel];
+}
+@end
+
+// NSDictionary
+NSDictionary *dict = @{
+                       @&quot;nick_name&quot; : @&quot;旺财&quot;,
+                       @&quot;sale_price&quot; : @&quot;10.5&quot;,
+                       @&quot;run_speed&quot; : @&quot;100.9&quot;
+                       };
+// NSDictionary -&gt; Dog
+Dog *dog = [Dog mj_objectWithKeyValues:dict];
+
+// printing
+NSLog(@&quot;nickName=%@, scalePrice=%f runSpeed=%f&quot;, dog.nickName, dog.salePrice, dog.runSpeed);</code></pre></div>
+
+<h3 id="toc_19"><a id="NSString_NSDate"></a> NSString -&gt; NSDate, nil -&gt; @&quot;&quot;【过滤字典的值（比如字符串日期处理为NSDate、字符串nil处理为@&quot;&quot;）】</h3>
+
+<div><pre><code class="language-objectivec">// Book
+#import &quot;MJExtension.h&quot;
+
+@implementation Book
+- (id)mj_newValueFromOldValue:(id)oldValue property:(MJProperty *)property
+{
+    if ([property.name isEqualToString:@&quot;publisher&quot;]) {
+        if (oldValue == nil) return @&quot;&quot;;
+    } else if (property.type.typeClass == [NSDate class]) {
+        NSDateFormatter *fmt = [[NSDateFormatter alloc] init];
+        fmt.dateFormat = @&quot;yyyy-MM-dd&quot;;
+        return [fmt dateFromString:oldValue];
+    }
+
+    return oldValue;
+}
+@end
+
+// NSDictionary
+NSDictionary *dict = @{
+                       @&quot;name&quot; : @&quot;5分钟突破iOS开发&quot;,
+                       @&quot;publishedTime&quot; : @&quot;2011-09-10&quot;
+                       };
+// NSDictionary -&gt; Book
+Book *book = [Book mj_objectWithKeyValues:dict];
+
+// printing
+NSLog(@&quot;name=%@, publisher=%@, publishedTime=%@&quot;, book.name, book.publisher, book.publishedTime);</code></pre></div>
+
+<h3 id="toc_20"><a id="More_use_cases"></a> More use cases【更多用法】</h3>
+
+<ul>
+<li>Please reference to <code>NSObject+MJKeyValue.h</code> and <code>NSObject+MJCoding.h</code></li>
+</ul>
+
+
+
+
+</body>
+
+</html>
