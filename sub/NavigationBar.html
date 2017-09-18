@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-		<meta charset="utf-8">
+
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>MarkDown</title>
+<title>NavigationBar</title>
 <link rel="shortcut icon" href="https://kococlass.github.io/sub/image/icon.jpg" type="image/x-icon" />
 
 
@@ -326,21 +328,42 @@ kbd {
 </style>
 
 <div id="bommmm" float: right; no-repeat;"><a href="#top">回到顶部</a></div>
-<span style="float:right" id="top" name="top"></h3>到顶了</span>
+
 </head>
+
 <body>
-<div ><h2>MarkDown</h2>
-<h3>
-<a href="../index.html" title="首页">首页</a>>MarkDown
-</h3>
-</div>
-<h3>
-<ol type="1" start="1">
-	<li><a href="MarkDown_1.html" title="MarkDown简单使用方法">MarkDown的简单使用</a></li>
-	<li><a href=""></a></li>
-	<li><a href=""></a></li>
-	<li><a href=""></a></li>
-</ol>
-</h3>
+
+<span id="top"></span>
+<h1 id="toc_0">NavigationBar</h1>
+<a href="../index.html" title="首页">首页</a>><a href="iOS.html">iOS相关</a>>NavigationBar<span style="float:right" >到顶了</span>
+<h4 id="toc_0">Navigationbar</h4>
+
+<ul>
+<li>返回问题</li>
+</ul>
+
+<p>1.更改默认返回键图标-如果想只显示图标的话，文字改为空字符串即可</p>
+
+<blockquote>
+<p>[self.navigationController.navigationBar setBackIndicatorImage:img];
+  [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:img];
+  UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@&quot;返回&quot; style:UIBarButtonItemStylePlain target:nil action:nil];</p>
+</blockquote>
+
+<p>2.设置侧滑返回</p>
+
+<p>在基础类中进行如下设置</p>
+
+<blockquote>
+<p>if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+  self.navigationController.interactivePopGestureRecognizer.delegate = self;
+  }</p>
+</blockquote>
+
+
+
+
+
 </body>
+
 </html>
