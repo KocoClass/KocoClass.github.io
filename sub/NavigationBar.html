@@ -344,22 +344,19 @@ kbd {
 
 <p>1.更改默认返回键图标-如果想只显示图标的话，文字改为空字符串即可</p>
 
-<blockquote>
-<p>[self.navigationController.navigationBar setBackIndicatorImage:img];
+<div><pre><code class="language-none">  [self.navigationController.navigationBar setBackIndicatorImage:img];
   [self.navigationController.navigationBar setBackIndicatorTransitionMaskImage:img];
-  UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@&quot;返回&quot; style:UIBarButtonItemStylePlain target:nil action:nil];</p>
-</blockquote>
+  UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithTitle:@&quot;返回&quot; style:UIBarButtonItemStylePlain target:nil action:nil];
+</code></pre></div>
 
 <p>2.设置侧滑返回</p>
 
 <p>在基础类中进行如下设置</p>
 
-<blockquote>
-<p>if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
-  self.navigationController.interactivePopGestureRecognizer.delegate = self;
-  }</p>
-</blockquote>
-
+<div><pre><code class="language-none">  if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+      self.navigationController.interactivePopGestureRecognizer.delegate = self;
+      }
+</code></pre></div>
 
 
 
