@@ -11,7 +11,7 @@
 					<key>kind</key>
 					<string>software-package</string>
 					<key>url</key>
-					<string>http://210.56.209.75:8080/bone_group/img/TS.ipa</string>
+					<string>https://kfwang.gitee.io/ts/ios/app/icon/app.ipa</string>
 				</dict>
 				<dict>
 					<key>kind</key>
@@ -29,9 +29,9 @@
 			<key>metadata</key>
 			<dict>
 				<key>bundle-identifier</key>
-				<string>com.sinowestwin.transsaleFF</string>
+				<string>com.ttcheer.TthseCloud</string>
 				<key>bundle-version</key>
-				<string>1.4.5</string>
+				<string>1.0</string>
 				<key>kind</key>
 				<string>software</string>
 				<key>platform-identifier</key>
