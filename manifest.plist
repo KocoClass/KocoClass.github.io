@@ -17,13 +17,13 @@
 					<key>kind</key>
 					<string>display-image</string>
 					<key>url</key>
-					<string>https://kfwang.gitee.io/ts/ios/app/icon/icon57.png</string>
+					<string>https://kfwang.gitee.io/ms/ios/icon/icon57.png</string>
 				</dict>
 				<dict>
 					<key>kind</key>
 					<string>full-size-image</string>
 					<key>url</key>
-					<string>https://kfwang.gitee.io/ts/ios/app/icon/icon512.png</string>
+					<string>https://kfwang.gitee.io/ms/ios/icon/icon512.png</string>
 				</dict>
 			</array>
 			<key>metadata</key>
@@ -37,7 +37,7 @@
 				<key>platform-identifier</key>
 				<string>com.apple.platform.iphoneos</string>
 				<key>title</key>
-				<string>ts</string>
+				<string>高名课堂</string>
 			</dict>
 		</dict>
 	</array>
