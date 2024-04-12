@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>房贷计算器</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>房贷计算器</h1>
+    <form id="calculatorForm">
+        <label for="loanAmount">借款总额：</label>
+        <input type="number" id="loanAmount" required><br>
+        <label for="terms">期数（月）：</label>
+        <input type="number" id="terms" required><br>
+        <label for="interestRate">利率（年利率，如4.5%）：</label>
+        <input type="number" id="interestRate" step="0.01" required><br>
+        <label for="repaymentMethod">还款方式：</label>
+        <select id="repaymentMethod" required>
+            <option value="等额本息">等额本息</option>
+            <option value="等额本金">等额本金</option>
+        </select><br>
+        <button type="button" onclick="calculate()">计算</button>
+    </form>
+    <div id="result"></div>
+    <div id="paymentSchedule"></div>
+
+    <script>
+        function calculate() {
+            // 获取用户输入的值
+            let loanAmount = parseFloat(document.getElementById('loanAmount').value);
+            let terms = parseInt(document.getElementById('terms').value);
+            let interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
+            let repaymentMethod = document.getElementById('repaymentMethod').value;
+            let monthlyPayment = 0;
+            let paymentScheduleHTML = '<h2>还款计划</h2><table><tr><th>期数</th><th>本金</th><th>利息</th></tr>';
+
+            // 根据还款方式计算每期需要还款的金额
+            if (repaymentMethod === '等额本息') {
+                // 计算每期还款金额（等额本息）
+                monthlyPayment = (loanAmount * interestRate / 12) * Math.pow(1 + interestRate / 12, terms) / (Math.pow(1 + interestRate / 12, terms) - 1);
+                let totalInterest = 0;
+                for (let i = 1; i <= terms; i++) {
+                    let interest = loanAmount * interestRate / 12;
+                    let principal = monthlyPayment - interest;
+                    loanAmount -= principal;
+                    totalInterest += interest;
+                    paymentScheduleHTML += `<tr><td>${i}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td></tr>`;
+                }
+            } else if (repaymentMethod === '等额本金') {
+                // 计算每期还款金额（等额本金）
+                monthlyPayment = loanAmount / terms + loanAmount * interestRate / 12;
+                for (let i = 1; i <= terms; i++) {
+                    let principal = loanAmount / terms;
+                    let interest = loanAmount * interestRate / 12;
+                    loanAmount -= principal;
+                    paymentScheduleHTML += `<tr><td>${i}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td></tr>`;
+                }
+            }
+
+            // 显示结果
+            document.getElementById('result').innerHTML = `<p>每期还款金额：${monthlyPayment.toFixed(2)}</p>`;
+            document.getElementById('paymentSchedule').innerHTML = paymentScheduleHTML + '</table>';
+        }
+    </script>
+</body>
+</html>
