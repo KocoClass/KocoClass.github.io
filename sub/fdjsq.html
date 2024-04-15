@@ -333,7 +333,7 @@ kbd {
 <p><span id="top"></span></p>
 
 <h1 id="toc_0">房贷计算器</h1>
-<a href="../index.html" title="首页">首页</a>><a href="HTML.html">HTML相关</a>>房贷计算器<span style="float:right" id="top" name="top">到顶了</span>
+<a href="../index.html" title="首页">首页</a>><a href="HTML.html">HTML相关</a>>房贷计算器<span style="float:right" id="top" name="top"></span>
 <h1>房贷计算器</h1>
     <form id="calculatorForm">
         <label for="loanAmount">借款总额：</label>
@@ -360,7 +360,7 @@ kbd {
             let interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
             let repaymentMethod = document.getElementById('repaymentMethod').value;
             let monthlyPayment = 0;
-            let paymentScheduleHTML = '<h2>还款计划</h2><table><tr><th>期数</th><th>本金</th><th>利息</th></tr>';
+            let paymentScheduleHTML = '<h2>还款计划</h2><table><tr><th>期数</th><th>本金</th><th>利息</th><th>剩余本金</th></tr>';
 
             // 根据还款方式计算每期需要还款的金额
             if (repaymentMethod === '等额本息') {
@@ -370,9 +370,10 @@ kbd {
                 for (let i = 1; i <= terms; i++) {
                     let interest = loanAmount * interestRate / 12;
                     let principal = monthlyPayment - interest;
+                    
                     loanAmount -= principal;
                     totalInterest += interest;
-                    paymentScheduleHTML += `<tr><td>${i}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td></tr>`;
+                    paymentScheduleHTML += `<tr><td>${i}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td><td>${loanAmount.toFixed(2)}</td></tr>`;
                 }
             } else if (repaymentMethod === '等额本金') {
                 // 计算每期还款金额（等额本金）
@@ -381,7 +382,7 @@ kbd {
                     let principal = loanAmount / terms;
                     let interest = loanAmount * interestRate / 12;
                     loanAmount -= principal;
-                    paymentScheduleHTML += `<tr><td>${i}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td></tr>`;
+                    paymentScheduleHTML += `<tr><td>${i}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td><td>${loanAmount.toFixed(2)}</td></tr>`;
                 }
             }
 
