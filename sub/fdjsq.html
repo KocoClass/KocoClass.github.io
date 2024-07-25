@@ -42,7 +42,7 @@
             let interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
             let repaymentMethod = document.getElementById('repaymentMethod').value;
             let monthlyPayment = 0;
-            let paymentScheduleHTML = '<h2>还款计划</h2><table><tr><th>期数</th><th>还款金额</th><th>本金</th><th>利息</th><th>剩余本金</th></tr>';
+            let paymentScheduleHTML = '<h2>还款计划</h2><table><tr><th>年份</th><th>期数</th><th>还款金额</th><th>本金</th><th>利息</th><th>剩余本金</th></tr>';
 
             // 根据还款方式计算每期需要还款的金额
             if (repaymentMethod === '等额本息') {
@@ -55,16 +55,22 @@
                     
                     loanAmount -= principal;
                     totalInterest += interest;
-                    paymentScheduleHTML += `<tr><td>${i}</td><td>${(principal+interest).toFixed(2)}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td><td>${loanAmount.toFixed(2)}</td></tr>`;
+                    let yue = i%12 == 0 ? 12 : i%12
+                    let formattedYue = yue.toString().padStart(2, '0');
+                    let nian = i%12 == 0 ? Math.floor(i / 12) : Math.floor(i / 12) + 1;
+                    paymentScheduleHTML += `<tr><td>第${nian}年 ${formattedYue}月</td><td>${i}</td><td>${(principal+interest).toFixed(2)}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td><td>${loanAmount.toFixed(2)}</td></tr>`;
                 }
             } else if (repaymentMethod === '等额本金') {
                 // 计算每期还款金额（等额本金）
+                let principal = loanAmount / terms;
                 monthlyPayment = loanAmount / terms + loanAmount * interestRate / 12;
                 for (let i = 1; i <= terms; i++) {
-                    let principal = loanAmount / terms;
                     let interest = loanAmount * interestRate / 12;
-                    loanAmount -= principal;
-                    paymentScheduleHTML += `<tr><td>${i}</td><td>${(principal+interest).toFixed(2)}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td><td>${loanAmount.toFixed(2)}</td></tr>`;
+                    loanAmount = loanAmount - principal;
+                    let yue = i%12 == 0 ? 12 : i%12
+                    let formattedYue = yue.toString().padStart(2, '0');
+                    let nian = i%12 == 0 ? Math.floor(i / 12) : Math.floor(i / 12) + 1;
+                    paymentScheduleHTML += `<tr><td>第${nian}年 ${formattedYue}月</td><td>${i}</td><td>${(principal+interest).toFixed(2)}</td><td>${principal.toFixed(2)}</td><td>${interest.toFixed(2)}</td><td>${loanAmount.toFixed(2)}</td></tr>`;
                 }
             }
 
