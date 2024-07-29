@@ -30,6 +30,9 @@
             <option value="等额本金">等额本金</option>
         </select><br>
         <button type="button" onclick="calculate()">计算</button>
+        <a href="javascript:;" id="export">
+            <button type="button" onclick="tableToExcel()">导出表格</button>
+        </a>
     </form>
     <div id="result"></div>
     <div id="paymentSchedule"></div>
@@ -42,7 +45,7 @@
             let interestRate = parseFloat(document.getElementById('interestRate').value) / 100;
             let repaymentMethod = document.getElementById('repaymentMethod').value;
             let monthlyPayment = 0;
-            let paymentScheduleHTML = '<h2>还款计划</h2><table><tr><th>年份</th><th>期数</th><th>还款金额</th><th>本金</th><th>利息</th><th>剩余本金</th></tr>';
+            let paymentScheduleHTML = '<h2>还款计划</h2><table id="tableExcel"><tr><th>年份</th><th>期数</th><th>还款金额</th><th>本金</th><th>利息</th><th>剩余本金</th></tr>';
 
             // 根据还款方式计算每期需要还款的金额
             if (repaymentMethod === '等额本息') {
@@ -77,6 +80,29 @@
             // 显示结果
             document.getElementById('result').innerHTML = `<p>每期还款金额：${monthlyPayment.toFixed(2)}</p>`;
             document.getElementById('paymentSchedule').innerHTML = paymentScheduleHTML + '</table>';
+        };
+        function tableToExcel(){
+          let title = '还款详情'
+          var uri = "data:application/vnd.ms-excel;base64,",
+            template =
+              '<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="UTF-8"><!--[if gte mso 9]><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet><x:Name>{worksheet}</x:Name><x:WorksheetOptions><x:DisplayGridlines/></x:WorksheetOptions></x:ExcelWorksheet></x:ExcelWorksheets></x:ExcelWorkbook></xml><![endif]--></head><body><table>{table}</table></body></html>',
+            base64 = function (s) {
+              return window.btoa(unescape(encodeURIComponent(s)));
+            },
+            format = function (s, c) {
+              return s.replace(/{(\w+)}/g, function (m, p) {
+                // console.log(c[p])
+                return c[p];
+              });
+            };
+          //根据ID获取table表格HTML
+          var table = document.getElementById("tableExcel");
+          console.log(table)
+          var ctx = { worksheet: "Worksheet", table: table.innerHTML };
+
+          document.getElementById("export").href =
+            uri + base64(format(template, ctx));
+          document.getElementById("export").download = `${title}.xls`;
         }
     </script>
 
