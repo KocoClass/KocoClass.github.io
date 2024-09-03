@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>BMI计算器</title>
+<link rel="icon" href="https://kococlass.github.io/sub/image/icon.png" type="image/x-icon" />
+<link rel="stylesheet" href="css/md.css">
+
+<div id="bommmm" float: right; no-repeat;"><a href="#top">回到顶部</a></div>
+
+</head>
+
+<body>
+<p><span id="top"></span></p>
+
+<h1 id="top" name="top">BMI计算器</h1>
+    <form id="bmi-form">
+            <label for="height">身高（厘米）：</label>
+            <input type="number" id="height" name="height" required>
+            
+            <label for="weight">体重（公斤）：</label>
+            <input type="number" id="weight" name="weight" required>
+            
+            <button type="submit">计算 BMI</button>
+        </form>
+        
+        <div id="result">
+            <p id="bmi-value"></p>
+            <p id="bmi-category"></p>
+        </div>
+
+    <script>
+        document.getElementById('bmi-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    // 获取用户输入
+    const heightCm = parseFloat(document.getElementById('height').value);
+    const weightKg = parseFloat(document.getElementById('weight').value);
+
+    if (isNaN(heightCm) || isNaN(weightKg) || heightCm <= 0 || weightKg <= 0) {
+        alert('请输入有效的身高和体重');
+        return;
+    }
+
+    // 计算 BMI
+    const heightM = heightCm / 100;
+    const bmi = weightKg / (heightM * heightM);
+
+    // 显示结果
+    const bmiValue = bmi.toFixed(2);
+    document.getElementById('bmi-value').textContent = `您的 BMI 是：${bmiValue}`;
+
+    let category;
+    if (bmi < 18.5) {
+        category = '体重过轻';
+    } else if (bmi < 24.9) {
+        category = '正常范围';
+    } else if (bmi < 29.9) {
+        category = '超重';
+    } else {
+        category = '肥胖';
+    }
+    document.getElementById('bmi-category').textContent = `分类：${category}`;
+});
+
+    </script>
+
+<p><a href="#top">回到顶部</a></p>
+</body>
+
+</html>
